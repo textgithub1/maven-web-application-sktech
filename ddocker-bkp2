@@ -25,8 +25,16 @@ RUN cp maven-web-application.war /opt/tomcat/webapps/app.war &&\
     cp tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml &&\
     cp context.xml /opt/tomcat/webapps/manager/META-INF/context.xml &&\
     cp contexth.xml /opt/tomcat/webapps/host-manager/META-INF/context.xml
+   
+
+#COPY maven-web-application.war /opt/tomcat/webapps/app.war  
+#COPY tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml 
+#COPY context.xml /opt/tomcat/apache-tomcat-9.0.70/webapps/manager/META-INF/context.xml 
+#COPY contexth.xml /opt/tomcat/apache-tomcat-9.0.70/webapps/host-manager/META-INF/context.xml
+
+#RUN /opt/tomcat/apache-tomcat-9.0.70/bin/shutdown.sh &&\
+#    /opt/tomcat/apache-tomcat-9.0.70/bin/startup.sh 
 
 # Start the Tomcat 
 #RUN sh /opt/tomcat/bin/startup.sh 
-WORKDIR /opt/tomcat
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
